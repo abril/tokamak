@@ -14,6 +14,6 @@ require "bundler/setup"
 # end
 
 module Tokamak
-
+  autoload :Recipes, "tokamak/recipes"
 end
 
