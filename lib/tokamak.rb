@@ -3,17 +3,16 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__))
 # Dependencies
 require "rubygems"
 require "bundler/setup"
-# require other dependencies here...
+require "json/pure"
+require "methodize"
 
-# Gem requirements
-# Your can require or autoload gem files here, see examples below
-# require "gem_name/file"
-# module GemName
-  # autoload :AClass      , "migrator/a_class"
-  # autoload :AnotherClass, "migrator/another_class"
-# end
-
+# Lib
 module Tokamak
-  autoload :Recipes, "tokamak/recipes"
+  def self.builder_lookup(media_type)
+    Tokamak::Builder::Base.global_media_types[media_type]
+  end
 end
 
+require "tokamak/errors"
+require "tokamak/recipes"
+require "tokamak/builder"
