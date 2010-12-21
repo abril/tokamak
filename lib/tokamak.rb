@@ -4,7 +4,7 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__))
 require "rubygems"
 require "bundler/setup"
 require "json/pure"
-require "methodize"
+require "nokogiri"
 
 # Lib
 module Tokamak
