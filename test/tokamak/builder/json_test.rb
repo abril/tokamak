@@ -6,7 +6,7 @@ class Tokamak::Builder::JsonTest < Test::Unit::TestCase
     assert_equal ["application/json"], Tokamak::Builder::Json.media_types
   end
   
-  def test_the_most_simple_json
+  def test_custom_values_and_iterating_over_members
     obj = [{ :foo => "bar" }]
     json = Tokamak::Builder::Json.build(obj) do |collection|
       collection.values do |values|
@@ -108,7 +108,7 @@ class Tokamak::Builder::JsonTest < Test::Unit::TestCase
     assert_equal 2      , hash.foos.size
   end
   
-  def test_nested_crazy_values
+  def test_nesting_values_should_build_an_entire_tree
     obj = [{ :foo => "bar" }, { :foo => "zue" }]
     json = Tokamak::Builder::Json.build(obj) do |collection|
       collection.values do |values|
@@ -225,17 +225,13 @@ end
 
 class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
 
-  def test_media_type_should_be_json
-    assert_equal ["application/json"], Tokamak::Builder::Json.media_types
-  end
-  
-  def test_the_most_simple_json
+  def test_custom_values_and_iterating_over_members
     obj = [{ :foo => "bar" }]
-    json = Tokamak::Builder::Json.build(obj) do |collection|
-      collection.write :id, "an_id"
+    json = Tokamak::Builder::Json.build(obj) do
+      write :id, "an_id"
       
-      collection.members do |member, some_foos|
-        member.write :id, some_foos[:foo]
+      members do |member, some_foos|
+        write :id, some_foos[:foo]
       end
     end
     
@@ -247,11 +243,11 @@ class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
 
   def test_root_set_on_builder
     obj = [{ :foo => "bar" }, { :foo => "zue" }]
-    json = Tokamak::Builder::Json.build(obj, :root => "foos") do |collection|
-      collection.write :id, "an_id"
+    json = Tokamak::Builder::Json.build(obj, :root => "foos") do
+      write :id, "an_id"
       
-      collection.members do |member, some_foos|
-        member.write :id, some_foos[:foo]
+      members do |member, some_foos|
+        write :id, some_foos[:foo]
       end
     end
     
@@ -265,11 +261,11 @@ class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
   def test_collection_set_on_members
     obj = { :foo => "bar" }
     a_collection = [1,2,3,4]
-    json = Tokamak::Builder::Json.build(obj) do |collection|
-      collection.write :id, "an_id"
+    json = Tokamak::Builder::Json.build(obj) do
+      write :id, "an_id"
       
-      collection.members(:collection => a_collection) do |member, number|
-        member.write :id, number
+      members(:collection => a_collection) do |member, number|
+        write :id, number
       end
     end
     
@@ -280,27 +276,13 @@ class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
     assert_equal 4      , hash.members.size
   end
   
-  def test_raise_exception_for_not_passing_a_collection_as_parameter_to_members
-    obj = 42
-    
-    assert_raise Tokamak::BuilderError do
-      json = Tokamak::Builder::Json.build(obj) do |collection, number|
-        collection.write :id, number
-      
-        collection.members do |member, item|
-          member.write :id, item
-        end
-      end
-    end
-  end
-
   def test_root_set_on_members
     obj = [{ :foo => "bar" }, { :foo => "zue" }]
-    json = Tokamak::Builder::Json.build(obj) do |collection|
-      collection.write :id, "an_id"
+    json = Tokamak::Builder::Json.build(obj) do
+      write :id, "an_id"
       
-      collection.members(:root => "foos") do |member, some_foos|
-        member.write :id, some_foos[:foo]
+      members(:root => "foos") do |member, some_foos|
+        write :id, some_foos[:foo]
       end
     end
     
@@ -311,15 +293,15 @@ class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
     assert_equal 2      , hash.foos.size
   end
   
-  def test_nested_crazy_values
+  def test_nesting_values_should_build_an_entire_tree
     obj = [{ :foo => "bar" }, { :foo => "zue" }]
-    json = Tokamak::Builder::Json.build(obj) do |values|
-      values.body {
-        values.face {
-          values.eyes  "blue"
-          values.mouth "large"
+    json = Tokamak::Builder::Json.build(obj) do
+      body {
+        face {
+          eyes  "blue"
+          mouth "large"
         }
-        values.legs [
+        legs [
           { :right => { :fingers_count => 5 } }, { :left => { :fingers_count => 4 } }
         ]
       }
@@ -333,38 +315,38 @@ class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
     assert_equal 4      , hash.body.legs.last.left.fingers_count
   end
 
-  def test_build_full_collection
+  def test_supports_collection_with_all_internals
     time = Time.now
     some_articles = [
       {:id => 1, :title => "a great article", :updated => time},
       {:id => 2, :title => "another great article", :updated => time}
     ]
     
-    json = Tokamak::Builder::Json.build(some_articles) do |collection|
-        collection.write :id,      "http://example.com/json"
-        collection.title   "Feed"
-        collection.updated time
+    json = Tokamak::Builder::Json.build(some_articles) do
+        write :id,      "http://example.com/json"
+        title   "Feed"
+        updated time
 
-        collection.author { 
-          collection.name  "John Doe"
-          collection.email "joedoe@example.com"
+        author { 
+          name  "John Doe"
+          email "joedoe@example.com"
         }
         
-        collection.author { 
-          collection.name  "Foo Bar"
-          collection.email "foobar@example.com"
+        author { 
+          name  "Foo Bar"
+          email "foobar@example.com"
         }
       
-      collection.link("next"    , "http://a.link.com/next")
-      collection.link("previous", "http://a.link.com/previous")
+      link("next"    , "http://a.link.com/next")
+      link("previous", "http://a.link.com/previous")
       
-      collection.members(:root => "articles") do |member, article|
-        member.write :id,      "uri:#{article[:id]}"                   
-        member.title   article[:title]
-        member.updated article[:updated]              
+      members(:root => "articles") do |member, article|
+        write :id,      "uri:#{article[:id]}"                   
+        title   article[:title]
+        updated article[:updated]              
         
-        member.link("image", "http://example.com/image/1")
-        member.link("image", "http://example.com/image/2", :type => "application/json")
+        link("image", "http://example.com/image/1")
+        link("image", "http://example.com/image/2", :type => "application/json")
       end
     end
 
@@ -389,18 +371,18 @@ class Tokamak::Builder::JsonLambdaTest < Test::Unit::TestCase
     time = Time.now
     an_article = {:id => 1, :title => "a great article", :updated => time}
     
-    json = Tokamak::Builder::Json.build(an_article, :root => "article") do |member, article|
-        member.write :id,      "uri:#{article[:id]}"           
-        member.title   article[:title]
-        member.updated article[:updated]
+    json = Tokamak::Builder::Json.build(an_article, :root => "article") do
+        write :id,      "uri:#{an_article[:id]}"           
+        title   an_article[:title]
+        updated an_article[:updated]
         
-        member.domain("xmlns" => "http://a.namespace.com") {
-          member.link("image", "http://example.com/image/1")
-          member.link("image", "http://example.com/image/2", :type => "application/atom+xml")
+        domain("xmlns" => "http://a.namespace.com") {
+          link("image", "http://example.com/image/1")
+          link("image", "http://example.com/image/2", :type => "application/atom+xml")
         }
       
-      member.link("image", "http://example.com/image/1")
-      member.link("image", "http://example.com/image/2", :type => "application/json")                                
+      link("image", "http://example.com/image/1")
+      link("image", "http://example.com/image/2", :type => "application/json")                                
     end
     
     hash = JSON.parse(json).extend(Methodize)

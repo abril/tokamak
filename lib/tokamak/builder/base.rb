@@ -35,8 +35,8 @@ module Tokamak
 
           builder = self.new(obj, options)
 
-          if recipe.arity==0
-            self.instance_exec(&recipe)
+          if recipe.arity==-1
+            builder.instance_exec(&recipe)
           else
             recipe.call(*[builder, obj, options][0, recipe.arity])
           end
@@ -83,6 +83,12 @@ module Tokamak
         values do |v|
           v.send sym, val
         end
+      end
+      
+      # the members method is left for compatibility with the
+      # external scope version of the DSL
+      def each(*args, &block)
+        members(*args, &block)
       end
 
     end
