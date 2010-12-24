@@ -8,7 +8,7 @@ module Tokamak
 
       # BlankSlate
       instance_methods.each do |m|
-        undef_method m unless m.to_s =~ /\[\]|method_missing|respond_to\?|^__/
+        undef_method m unless m.to_s =~ /\[\]|method_missing|send|respond_to\?|^__/
       end
 
       def initialize(builder)

@@ -35,7 +35,11 @@ module Tokamak
 
           builder = self.new(obj, options)
 
-          recipe.call(*[builder, obj, options][0, recipe.arity])
+          if recipe.arity==0
+            self.instance_exec(&recipe)
+          else
+            recipe.call(*[builder, obj, options][0, recipe.arity])
+          end
 
           builder.representation
         end
@@ -66,6 +70,18 @@ module Tokamak
               #{self.name}.build(obj, *args, &block)
             end
           EOS
+        end
+      end
+
+      def method_missing(sym, *args, &block)
+        values do |v|
+          v.send sym, *args, &block
+        end
+      end
+      
+      def write(sym, val)
+        values do |v|
+          v.send sym, val
         end
       end
 
