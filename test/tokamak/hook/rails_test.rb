@@ -1,11 +1,15 @@
+require 'test/unit'
+require 'rubygems'
+require 'ruby-debug'
+require "methodize"
 require "rack/conneg"
-require File.expand_path(File.dirname(__FILE__) + '/../../test_helper')
+
 require File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/config/environment.rb')
 
-class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
+# put the require below to use tokamak in your rails project
+require "tokamak/hook/rails"
 
-  # just triggering the module responsible for registering the template handler
-  Tokamak::Hook::Rails
+class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
 
   def test_view_generation_with_json
     get '/test/show', {}, :accept => 'application/json'
