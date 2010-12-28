@@ -1,0 +1,9 @@
+member.values do |values|
+    values.id      "uri:#{article[:id]}"
+    values.title   article[:title]
+    values.updated article[:updated]
+end
+
+member.link("image", "http://example.com/image/1")
+member.link("image", "http://example.com/image/2", :type => "application/json")
+

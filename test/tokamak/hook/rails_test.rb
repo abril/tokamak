@@ -49,6 +49,22 @@ class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
   end
 
   def test_view_generation_with_partial
-    assert true
+    get '/test/feed', {}, :accept => 'application/xml'
+
+    xml = @controller.response.body
+    xml = Nokogiri::XML::Document.parse(xml)
+
+    assert_equal "John Doe"               , xml.css("root > author").first.css("name").first.text
+    assert_equal "foobar@example.com"     , xml.css("root > author").last.css("email").first.text
+
+    assert_equal "http://a.link.com/next" , xml.css("root > link").first["href"]
+    assert_equal "next"                   , xml.css("root > link").first["rel"]
+    assert_equal "application/xml"        , xml.css("root > link").last["type"]
+
+    assert_equal "uri:1"                      , xml.css("root > articles").first.css("id").first.text
+    assert_equal "a great article"            , xml.css("root > articles").first.css("title").first.text
+    assert_equal "http://example.com/image/1" , xml.css("root > articles").first.css("link").first["href"]
+    assert_equal "image"                      , xml.css("root > articles").first.css("link").first["rel"]
+    assert_equal "application/json"           , xml.css("root > articles").first.css("link").last["type"]
   end
 end
