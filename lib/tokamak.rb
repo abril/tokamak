@@ -16,3 +16,4 @@ end
 require "tokamak/errors"
 require "tokamak/recipes"
 require "tokamak/builder"
+require "tokamak/hook"
