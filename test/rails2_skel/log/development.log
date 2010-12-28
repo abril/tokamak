@@ -1,0 +1,382 @@
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-27 17:49:25) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+NameError (undefined local variable or method `time' for #<TestController:0x102424390>):
+  app/controllers/test_controller.rb:4:in `show'
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (35.5ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-27 17:50:00) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+NameError (undefined local variable or method `time' for #<TestController:0x102424430>):
+  app/controllers/test_controller.rb:4:in `show'
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (35.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-27 17:50:52) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+NameError (undefined local variable or method `time' for #<TestController:0x102424430>):
+  app/controllers/test_controller.rb:4:in `show'
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (35.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-27 17:51:41) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+NameError (undefined local variable or method `time' for #<TestController:0x102424430>):
+  app/controllers/test_controller.rb:4:in `show'
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (46.0ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-27 17:52:36) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+ActionView::MissingTemplate (Missing template test/show.erb in view path app/views):
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-27 17:53:12) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+ActionView::MissingTemplate (Missing template test/show.erb in view path app/views):
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:13:52) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+ActionView::MissingTemplate (Missing template test/show.erb in view path app/views):
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:29:58) [GET]
+  Parameters: {"content_type"=>"application/json"}
+
+ActionView::MissingTemplate (Missing template test/show.erb in view path app/views):
+  /test/tokamak/hook/rails_test.rb:7:in `test_view_generation_with_json'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+  /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+  rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:36:49) [GET]
+  Parameters: {"content_type"=>"application/json"}
+Rendering test/show
+
+ActionView::TemplateError (undefined method `helper' for nil:NilClass) on line #1 of app/views/test/show.tokamak:
+1: collection(@some_articles) do |collection|
+2:     collection.values do |values|
+3:         values.id      "http://example.com/json"
+4:         values.title   "Feed"
+
+    app/views/test/show.tokamak:1:in `_run_tokamak_app47views47test47show46tokamak'
+    /test/tokamak/hook/rails_test.rb:9:in `test_view_generation_with_json'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+    rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (45.6ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:47:59) [GET]
+  Parameters: {"content_type"=>"application/json"}
+Rendering test/show
+
+ActionView::TemplateError (undefined method `helper' for nil:NilClass) on line #1 of app/views/test/show.tokamak:
+1: collection(@some_articles) do |collection|
+2:     collection.values do |values|
+3:         values.id      "http://example.com/json"
+4:         values.title   "Feed"
+
+    app/views/test/show.tokamak:1:in `_run_tokamak_app47views47test47show46tokamak'
+    /test/tokamak/hook/rails_test.rb:11:in `test_view_generation_with_json'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+    rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (46.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:51:50) [GET]
+  Parameters: {"accept"=>"application/json"}
+Rendering test/show
+
+ActionView::TemplateError (undefined method `helper' for nil:NilClass) on line #1 of app/views/test/show.tokamak:
+1: collection(@some_articles) do |collection|
+2:     collection.values do |values|
+3:         values.id      "http://example.com/json"
+4:         values.title   "Feed"
+
+    app/views/test/show.tokamak:1:in `_run_tokamak_app47views47test47show46tokamak'
+    /test/tokamak/hook/rails_test.rb:11:in `test_view_generation_with_json'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+    rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (46.7ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:52:49) [GET]
+  Parameters: {"accept"=>"application/json"}
+Rendering test/show
+
+ActionView::TemplateError (undefined method `helper' for nil:NilClass) on line #1 of app/views/test/show.tokamak:
+1: collection(@some_articles) do |collection|
+2:     collection.values do |values|
+3:         values.id      "http://example.com/json"
+4:         values.title   "Feed"
+
+    app/views/test/show.tokamak:1:in `_run_tokamak_app47views47test47show46tokamak'
+    /test/tokamak/hook/rails_test.rb:11:in `test_view_generation_with_json'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+    rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (46.8ms)
+Rendered rescues/_request_and_response (1.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:56:30) [GET]
+  Parameters: {"accept"=>"application/json"}
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:58:50) [GET]
+Rendering test/show
+
+ActionView::TemplateError (undefined method `helper' for nil:NilClass) on line #1 of app/views/test/show.tokamak:
+1: collection(@some_articles) do |collection|
+2:     collection.values do |values|
+3:         values.id      "http://example.com/json"
+4:         values.title   "Feed"
+
+    app/views/test/show.tokamak:1:in `_run_tokamak_app47views47test47show46tokamak'
+    /test/tokamak/hook/rails_test.rb:11:in `test_view_generation_with_json'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:34:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `each'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/testsuite.rb:33:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnermediator.rb:46:in `run_suite'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:67:in `start_mediator'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/console/testrunner.rb:41:in `start'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/ui/testrunnerutilities.rb:29:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:216:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit/autorunner.rb:12:in `run'
+    /Users/cipriani/.rvm/rubies/ruby-1.8.7-p249/lib/ruby/1.8/test/unit.rb:279
+    rake (0.8.7) lib/rake/rake_test_loader.rb:5
+
+Rendered rescues/_trace (62.0ms)
+Rendered rescues/_request_and_response (1.5ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 10:59:16) [GET]
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 11:00:22) [GET]
+Rendering test/show
+Completed in 8ms (View: 6 | 200 OK [http://www.example.com/test/show]
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 11:02:17) [GET]
+Rendering test/show
+Completed in 8ms (View: 6 | 200 OK [http://www.example.com/test/show]
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 11:04:54) [GET]
+Rendering test/show
+Completed in 7ms (View: 6 | 200 OK [http://www.example.com/test/show]
+
+
+Processing TestController#show (for 127.0.0.1 at 2010-12-28 11:04:54) [GET]
+Rendering test/show
+Completed in 3ms (View: 2 | 200 OK [http://www.example.com/test/show]
