@@ -1,3 +1,5 @@
+require "nokogiri"
+
 module Tokamak
   module Builder
     class Xml < Tokamak::Builder::Base

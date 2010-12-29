@@ -3,8 +3,6 @@ $:.unshift(File.dirname(__FILE__)) unless $:.include?(File.dirname(__FILE__))
 # Dependencies
 require "rubygems"
 require "bundler/setup"
-require "json/pure"
-require "nokogiri"
 
 # Lib
 module Tokamak
