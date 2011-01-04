@@ -16,6 +16,10 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency('ruby-debug')
   s.add_development_dependency('methodize')
-  s.add_development_dependency('rails',"~>2.3")
+  s.add_development_dependency('rack',"~>1.2")
+  s.add_development_dependency('rack-test')
   s.add_development_dependency('rack-conneg')
+  s.add_development_dependency('tilt',"~>1.2")
+  s.add_development_dependency('sinatra',"~>1.1")
+  s.add_development_dependency('rails',"~>2.3")
 end
