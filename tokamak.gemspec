@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "Tokamak"
-  s.version       = "1.0.0"
+  s.version       = "1.1.1"
   s.platform      = Gem::Platform::RUBY
   s.summary       = "A template handler that generates several media types representations, from a simple DSL"
 
