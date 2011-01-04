@@ -14,7 +14,7 @@ class Tokamak::Hook::TiltTest < Test::Unit::TestCase
       {:id => 2, :title => "another great article", :updated => Time.now}
     ]
 
-    template = Tokamak::Hook::Tilt::TokamakTemplate.new(File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test/show.tokamak'), :content_type => "application/json")
+    template = Tokamak::Hook::Tilt::TokamakTemplate.new(File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test/show.tokamak'), :media_type => "application/json")
     json     = template.render(self, :@some_articles => @some_articles)
     hash     = JSON.parse(json).extend(Methodize)
 

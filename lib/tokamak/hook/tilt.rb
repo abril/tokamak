@@ -11,15 +11,15 @@ module Tokamak
         end
 
         def prepare
-          @content_type = options[:content_type]
-          raise Tokamak::BuilderError.new("Content type required to build representation.") unless @content_type
+          @media_type = options[:media_type]
+          raise Tokamak::BuilderError.new("Content type required to build representation.") unless @media_type
         end
 
         def precompiled_preamble(locals)
           local_assigns = super
           <<-RUBY
             begin
-              extend ::Tokamak.builder_lookup(#{@content_type.inspect}).helper
+              extend ::Tokamak.builder_lookup(#{@media_type.inspect}).helper
               #{local_assigns}
           RUBY
         end
