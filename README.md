@@ -11,6 +11,9 @@ The lib provide hooks for:
 * Sinatra
 * Tilt ([https://github.com/rtomayko/tilt](https://github.com/rtomayko/tilt))
 
+Just put `require "tokamak/hook/[sinatra|rails|tilt]"` on your app. See unit
+tests for hook samples.
+
 You are also able to implement hooks for other frameworks.
 
 ## Sample
