@@ -24,7 +24,7 @@ The following DSL is a patch over the original DSL.
 
     collection(@some_articles) do
         write :id,      "http://example.com/json"
-        title   "Feed"
+        title   "Today's Articles"
         updated Time.now
 
         author {
@@ -33,8 +33,8 @@ The following DSL is a patch over the original DSL.
         }
 
         author {
-            name  "Foo Bar"
-            email "foobar@example.com"
+            name  "My Professor"
+            email "myprofessor@example.com"
         }
 
         link("next"    , "http://a.link.com/next")
@@ -60,8 +60,8 @@ Generates the following representations:
             "email": "joedoe@example.com"
         },
         {
-            "name": "Foo Bar",
-            "email": "foobar@example.com"
+            "name": "My Professor",
+            "email": "myprofessor@example.com"
         }],
         "title": "Feed",
         "id": "http://example.com/json",
@@ -122,8 +122,8 @@ Generates the following representations:
         <email>joedoe@example.com</email>
       </author>
       <author>
-        <name>Foo Bar</name>
-        <email>foobar@example.com</email>
+        <name>My Professor</name>
+        <email>myprofessor@example.com</email>
       </author>
       <link href="http://a.link.com/next" rel="next" type="application/xml"/>
       <link href="http://a.link.com/previous" rel="previous" type="application/xml"/>
