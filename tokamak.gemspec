@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "Tokamak"
-  s.version       = "1.1.1"
+  s.version       = "2.3.2"
   s.platform      = Gem::Platform::RUBY
   s.summary       = "A template handler that generates several media types representations, from a simple DSL"
 
@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency('rack-conneg')
   s.add_development_dependency('tilt',"~>1.2")
   s.add_development_dependency('sinatra',"~>1.1")
-  s.add_development_dependency('rails',"~>2.3")
+  s.add_development_dependency('rails',"~>3.0")
 end
