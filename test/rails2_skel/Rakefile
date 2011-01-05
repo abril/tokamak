@@ -1,0 +1,16 @@
+require(File.join(File.dirname(__FILE__), 'config', 'boot'))
+require 'rake'
+# require 'rake/testtask'
+# require 'rake/rdoctask'
+# require 'tasks/rails'
+
+# extracted from 'tasks/rails' since its the only tasks we're interested in
+$VERBOSE = nil
+
+task :default => :middleware
+task :environment do
+  $rails_rake_task = true
+  require(File.join(RAILS_ROOT, 'config', 'environment'))
+end
+
+

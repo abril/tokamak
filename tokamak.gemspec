@@ -1,18 +1,25 @@
 Gem::Specification.new do |s|
   s.name          = "Tokamak"
-  s.version       = "0.0.1"
+  s.version       = "1.1.1"
   s.platform      = Gem::Platform::RUBY
   s.summary       = "A template handler that generates several media types representations, from a simple DSL"
 
   s.require_paths = ['lib']
-  s.files         = Dir["{lib/**/*.rb,README.md,test/**/*.rb,Rakefile,*.gemspec,script/*}"]
+  s.files         = Dir["{lib/**/*.rb,README.md,LICENSE,test/**/*,script/*}"]
 
   s.author        = "Luis Cipriani"
-  s.email         = "lfcipriani@gmail.com"
-  s.homepage      = "http://www.abril.com.br"
+  s.email         = "luis.cipriani@abril.com.br"
+  s.homepage      = "http://github.com/abril/tokamak"
 
-  # s.add_dependency('dependency', '>= 1.0.0')
+  s.add_dependency('json_pure')
+  s.add_dependency('nokogiri')
 
-  # s.add_development_dependency('cover_me')
-  # s.add_development_dependency('ruby-debug19')
+  s.add_development_dependency('ruby-debug')
+  s.add_development_dependency('methodize')
+  s.add_development_dependency('rack',"~>1.2")
+  s.add_development_dependency('rack-test')
+  s.add_development_dependency('rack-conneg')
+  s.add_development_dependency('tilt',"~>1.2")
+  s.add_development_dependency('sinatra',"~>1.1")
+  s.add_development_dependency('rails',"~>2.3")
 end

@@ -28,9 +28,9 @@ module Tokamak
             recipe = options.delete(:recipe)
           end
 
-          if !recipe.respond_to?(:call)
+          unless recipe.respond_to?(:call)
             recipe = Tokamak::Recipes[recipe]
-            raise Tokamak::BuilderError.new("Recipe required to build representation.") unless recipe
+            raise Tokamak::BuilderError.new("Recipe required to build representation.") unless recipe.respond_to?(:call)
           end
 
           builder = self.new(obj, options)

@@ -1,3 +1,5 @@
+require "json/pure"
+
 module Tokamak
   module Builder
     class Json < Tokamak::Builder::Base
