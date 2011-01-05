@@ -18,37 +18,35 @@ You are also able to implement hooks for other frameworks.
 
 ## Sample
 
+The following DSL is a patch over the original DSL.
+
 ### Tokamak code
 
-    collection(@some_articles) do |collection|
-        collection.values do |values|
-            values.id      "http://example.com/json"
-            values.title   "Feed"
-            values.updated Time.now
+    collection(@some_articles) do
+        write :id,      "http://example.com/json"
+        title   "Feed"
+        updated Time.now
 
-            values.author {
-                values.name  "John Doe"
-                values.email "joedoe@example.com"
-            }
+        author {
+            name  "John Doe"
+            email "joedoe@example.com"
+        }
 
-            values.author {
-                values.name  "Foo Bar"
-                values.email "foobar@example.com"
-            }
-        end
+        author {
+            name  "Foo Bar"
+            email "foobar@example.com"
+        }
 
-        collection.link("next"    , "http://a.link.com/next")
-        collection.link("previous", "http://a.link.com/previous")
+        link("next"    , "http://a.link.com/next")
+        link("previous", "http://a.link.com/previous")
 
-        collection.members(:root => "articles") do |member, article|
-            member.values do |values|
-                values.id      "uri:#{article[:id]}"
-                values.title   article[:title]
-                values.updated article[:updated]
-            end
+        members(:root => "articles") do |member, article|
+            write :id,      "uri:#{article[:id]}"
+            title   article[:title]
+            updated article[:updated]
 
-            member.link("image", "http://example.com/image/1")
-            member.link("image", "http://example.com/image/2", :type => "application/json")
+            link("image", "http://example.com/image/1")
+            link("image", "http://example.com/image/2", :type => "application/json")
         end
     end
 
