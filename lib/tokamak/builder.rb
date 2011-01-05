@@ -12,9 +12,7 @@ module Tokamak
           #{const.name}.build(obj, *args, &block)
         end
 
-        def member(obj, *args, &block)
-          #{const.name}.build(obj, *args, &block)
-        end
+        alias_method :member, :collection
       EOS
       mod
     end
