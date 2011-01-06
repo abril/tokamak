@@ -1,5 +1,3 @@
-require "nokogiri"
-
 module Tokamak
   module Builder
     class Xml < Tokamak::Builder::Base
@@ -9,10 +7,16 @@ module Tokamak
       attr_reader :raw
 
       def initialize(obj, options = {})
+        initialize_library
         @raw = Nokogiri::XML::Document.new
         @obj = obj
         @parent = @raw.create_element(options[:root] || "root")
         @parent.parent = @raw
+      end
+
+      def initialize_library
+        return if defined?(::Nokogiri)
+        require "nokogiri"
       end
 
       def members(options = {}, &block)

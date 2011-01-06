@@ -1,5 +1,3 @@
-require "json/pure"
-
 module Tokamak
   module Builder
     class Json < Tokamak::Builder::Base
@@ -9,9 +7,15 @@ module Tokamak
       attr_reader :raw
 
       def initialize(obj, options = {})
+        initialize_library
         @raw     = options[:root] ? { options[:root] => {} } : {}
         @current = options[:root] ? @raw[options[:root]]     : @raw
         @obj     = obj
+      end
+
+      def initialize_library
+        return if defined?(::JSON)
+        require "json/pure"
       end
 
       def members(options = {}, &block)

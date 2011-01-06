@@ -1,9 +1,9 @@
 module Tokamak
   module Builder
-    autoload :Base  , "tokamak/builder/base"
-    autoload :Values, "tokamak/builder/values"
-    autoload :Json  , "tokamak/builder/json"
-    autoload :Xml   , "tokamak/builder/xml"
+    require "tokamak/builder/base"
+    require "tokamak/builder/values"
+    require "tokamak/builder/json"
+    require "tokamak/builder/xml"
 
     def self.helper_module_for(const)
       mod = Module.new
