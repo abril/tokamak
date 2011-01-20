@@ -21,15 +21,15 @@ class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
     assert_equal "foobar@example.com"     , hash.author.last.email
     assert_equal "http://example.com/json", hash.id
 
-    assert_equal "http://a.link.com/next" , hash.link.first.href
-    assert_equal "next"                   , hash.link.first.rel
-    assert_equal "application/json"       , hash.link.last.type
+    assert_equal "http://a.link.com/next" , hash.links.first.href
+    assert_equal "next"                   , hash.links.first.rel
+    assert_equal "application/json"       , hash.links.last.type
 
     assert_equal "uri:1"                      , hash.articles.first.id
     assert_equal "a great article"            , hash.articles.first.title
-    assert_equal "http://example.com/image/1" , hash.articles.last.link.first.href
-    assert_equal "image"                      , hash.articles.last.link.first.rel
-    assert_equal "application/json"           , hash.articles.last.link.last.type
+    assert_equal "http://example.com/image/1" , hash.articles.last.links.first.href
+    assert_equal "image"                      , hash.articles.last.links.first.rel
+    assert_equal "application/json"           , hash.articles.last.links.last.type
   end
 
   def test_view_generation_with_xml
