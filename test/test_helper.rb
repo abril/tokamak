@@ -3,5 +3,5 @@ require 'rubygems'
 require 'ruby-debug'
 require "methodize"
 
-require 'lib/tokamak'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/tokamak.rb')
 
