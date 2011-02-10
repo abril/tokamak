@@ -1,8 +1,11 @@
 require 'test/unit'
 require 'rubygems'
-require 'ruby-debug'
 require "methodize"
 require "rack/conneg"
+
+begin
+  require 'ruby-debug'
+rescue Exception => e; end
 
 require File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/config/environment.rb')
 

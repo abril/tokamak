@@ -1,9 +1,12 @@
 require 'test/unit'
 require 'rubygems'
-require 'ruby-debug'
 require "methodize"
 require "sinatra"
 require "rack/conneg"
+
+begin
+  require 'ruby-debug'
+rescue Exception => e; end
 
 # requiring the hook for sinatra
 require "tokamak/hook/sinatra"

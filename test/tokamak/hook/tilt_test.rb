@@ -1,8 +1,11 @@
 require 'test/unit'
 require 'rubygems'
-require 'ruby-debug'
 require "methodize"
 require "tilt"
+
+begin
+  require 'ruby-debug'
+rescue Exception => e; end
 
 require "tokamak/hook/tilt"
 
