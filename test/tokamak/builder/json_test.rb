@@ -24,6 +24,7 @@ class Tokamak::Builder::JsonTest < Test::Unit::TestCase
     
     assert_equal "an_id", hash.id
     assert_equal "bar"  , hash.members.first.id
+    assert hash.members.kind_of?(Array)
   end
 
   def test_root_set_on_builder
@@ -67,6 +68,29 @@ class Tokamak::Builder::JsonTest < Test::Unit::TestCase
     assert_equal "an_id", hash.id
     assert_equal 1      , hash.members.first.id
     assert_equal 4      , hash.members.size
+  end
+  
+  def test_collection_set_on_members_only_one
+    obj = { :foo => "bar" }
+    a_collection = [1]
+    json = Tokamak::Builder::Json.build(obj) do |collection|
+      collection.values do |values|
+        values.id "an_id"
+      end
+      
+      collection.members(:collection => a_collection) do |member, number|
+        member.values do |values|
+          values.id number
+        end        
+      end
+    end
+    
+    hash = JSON.parse(json).extend(Methodize)
+    
+    assert_equal "an_id", hash.id
+    assert_equal 1      , hash.members.first.id
+    assert_equal 1      , hash.members.size
+    assert hash.members.kind_of?(Array)
   end
   
   def test_raise_exception_for_not_passing_a_collection_as_parameter_to_members
@@ -130,6 +154,33 @@ class Tokamak::Builder::JsonTest < Test::Unit::TestCase
     assert_equal "large", hash.body.face.mouth
     assert_equal 2      , hash.body.legs.count
     assert_equal 4      , hash.body.legs.last.left.fingers_count
+  end
+  
+  def test_build_single_link_in_collection_and_member
+    obj = [{ :foo => "bar" }]
+    json = Tokamak::Builder::Json.build(obj) do |collection|
+      collection.values do |values|
+        values.id "an_id"
+      end
+      
+      collection.link 'self', "http://example.com/an_id"
+      
+      collection.members do |member, some_foos|
+        member.values do |values|
+          values.id some_foos[:foo]
+        end
+        
+        member.link 'self', "http://example.com/an_id/#{some_foos[:foo]}"
+      end
+    end
+    
+    hash = JSON.parse(json).extend(Methodize)
+    
+    assert_equal "an_id", hash.id
+    assert_equal "bar"  , hash.members.first.id
+    assert hash.members.kind_of?(Array)
+    assert hash.link.kind_of?(Array)
+    assert hash.members.first.link.kind_of?(Array)
   end
 
   def test_build_full_collection

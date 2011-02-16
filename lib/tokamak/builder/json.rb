@@ -41,7 +41,10 @@ module Tokamak
       end
 
       def link(relationship, uri, options = {})
-        options["rel"] = relationship.to_s
+        # Start link array
+        @current["link"] = [] unless @current["link"]
+        
+        options["rel"]  = relationship.to_s
         options["href"] = uri
         options["type"] ||= options[:type] || "application/json"
         insert_value("link", nil, options)
