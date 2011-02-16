@@ -50,12 +50,15 @@ module Tokamak
       end
 
       def insert_value(name, prefix, *args, &block)
-        node = create_element(name.to_s, prefix, *args)
-        node.parent = @parent
-        if block_given?
-          @parent = node
-          block.call
-          @parent = node.parent
+        # Protected if empty array
+        unless args.size == 1 and args.first == []
+          node = create_element(name.to_s, prefix, *args)
+          node.parent = @parent
+          if block_given?
+            @parent = node
+            block.call
+            @parent = node.parent
+          end
         end
       end
 

@@ -108,6 +108,30 @@ class Tokamak::Builder::XmlTest < Test::Unit::TestCase
     assert_equal "bar"  , xml.css("root > foos > id").first.text
     assert_equal 2      , xml.css("root > foos > id").size
   end
+  
+  def test_values_that_should_be_an_array
+    obj = [{ :foo => ["bar", "zoom"] }]
+    xml = Tokamak::Builder::Xml.build(obj) do |collection|
+      collection.values do |values|
+        values.id "an_id"
+      end
+
+      collection.members do |member, some_foos|
+        member.values do |values|
+          values.ids []
+          some_foos[:foo].each do |id|
+            values.ids id
+          end
+        end
+      end
+    end
+
+    xml = Nokogiri::XML::Document.parse(xml)
+
+    assert_equal "root" , xml.root.name
+    assert_equal "an_id", xml.css("root id").first.text
+    assert_equal ["bar", "zoom"], xml.css("root > member > ids").map { |id| id.text }
+  end
 
   def test_nested_crazy_values
     obj = [{ :foo => "bar" }, { :foo => "zue" }]
