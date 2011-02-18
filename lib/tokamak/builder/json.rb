@@ -43,10 +43,11 @@ module Tokamak
       def link(relationship, uri, options = {})
         # Start link array
         @current["link"] = [] unless @current["link"]
-        
+        stringify_keys(options) 
+
         options["rel"]  = relationship.to_s
         options["href"] = uri
-        options["type"] ||= options[:type] || "application/json"
+        options["type"] ||= "application/json"
         insert_value("link", nil, options)
       end
 
@@ -109,6 +110,11 @@ module Tokamak
         end
       end
 
+      def stringify_keys(hash)
+        hash.keys.each do |key|
+          hash[key.to_s] = hash.delete(key)
+        end
+      end
     end
   end
 end
