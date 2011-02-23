@@ -49,7 +49,7 @@ module Tokamak
               extend @content_type_helpers
               context = eval("(class << self; self; end)", binding)
 
-              unless caller_binding[:locals].nil?
+              if caller_binding[:locals]
                 caller_binding[:locals].each do |k, v|
                   context.send(:define_method, k.to_sym) { v }
                 end
