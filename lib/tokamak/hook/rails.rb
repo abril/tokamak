@@ -66,12 +66,11 @@ module Tokamak
       if defined? ::ActionView::Template and ::ActionView::Template.respond_to?(:register_template_handler)
         ::ActionView::Template
       else
+        if defined? ::ActionController::Base
+          ::ActionController::Base.exempt_from_layout :tokamak
+        end
         ::ActionView::Base
       end.register_template_handler(:tokamak, Tokamak)
-
-      if defined? ::ActionController::Base
-        ::ActionController::Base.exempt_from_layout :tokamak
-      end
 
     end
   end
