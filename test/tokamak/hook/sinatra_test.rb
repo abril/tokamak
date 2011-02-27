@@ -14,10 +14,7 @@ require "tokamak/hook/sinatra"
 # simple sinatra app declaration
 set :views, File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test')
 
-use(Rack::Tokamak) do |registry|
-  registry << Tokamak::Builder::Json
-  registry << Tokamak::Builder::Xml
-end
+use(Rack::Tokamak)
 use(Rack::Conneg) do |conneg|
   conneg.set :accept_all_extensions, false
   conneg.set :fallback, :html

@@ -3,17 +3,26 @@ require "tokamak/hook/tilt"
 
 module Rack
   class Tokamak
+    
     def initialize(app)
       @app = app
       @registry = ::Tokamak::Registry.new
-      yield @registry if block_given?
+      if block_given?
+        yield @registry
+      else
+        @registry << ::Tokamak::Builder::Json
+        @registry << ::Tokamak::Builder::Xml
+      end
     end
+    
     def call(env)
       env["tokamak"] = @registry
       @app.call(env)
     end
+    
   end
 end
+
 module Tokamak
   module Hook
     module Sinatra
