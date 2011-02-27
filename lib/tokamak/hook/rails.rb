@@ -1,10 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../tokamak.rb') unless defined? ::Tokamak
 
-module ActionController
-  class Base
+module Tokamak
+  module RegistryContainer
+    
     def tokamak_registry
       @tokamak || use_tokamak
     end
+    
     def use_tokamak(&block)
       @tokamak = ::Tokamak::Registry.new
       if block_given?
@@ -15,6 +17,13 @@ module ActionController
       end
       @tokamak
     end
+    
+  end
+end
+
+module ActionController
+  class Base
+    include Tokamak::RegistryContainer
   end
 end
 
