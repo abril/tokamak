@@ -10,18 +10,24 @@ rescue Exception => e; end
 require "tokamak/hook/tilt"
 
 class Tokamak::Hook::TiltTest < Test::Unit::TestCase
+  
+  def env
+    @tokamak_registry = Tokamak::Registry.new
+    @tokamak_registry << Tokamak::Builder::Json
+    @env = {}
+    @env["tokamak"] = @tokamak_registry
+    @env
+  end
 
   def test_tokamak_builder_integration_with_tilt
     
-    @registry = Tokamak::Registry.new
-    @registry << Tokamak::Builder::Json
     @some_articles = [
       {:id => 1, :title => "a great article", :updated => Time.now},
       {:id => 2, :title => "another great article", :updated => Time.now}
     ]
 
     view = File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test/show.tokamak')
-    template = Tokamak::Hook::Tilt::TokamakTemplate.new(@registry, view, :media_type => "application/json")
+    template = Tokamak::Hook::Tilt::TokamakTemplate.new(@tokamak_registry, view, :media_type => "application/json")
     json     = template.render(self, :@some_articles => @some_articles)
     hash     = JSON.parse(json).extend(Methodize)
 

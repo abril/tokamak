@@ -1,6 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../tokamak.rb') unless defined? ::Tokamak
 require "tokamak/hook/tilt"
 
+module Rack
+  class Tokamak
+    def initialize(app)
+      @app = app
+      @registry = ::Tokamak::Registry.new
+      yield @registry if block_given?
+    end
+    def call(env)
+      env["tokamak"] = @registry
+      @app.call(env)
+    end
+  end
+end
 module Tokamak
   module Hook
     module Sinatra

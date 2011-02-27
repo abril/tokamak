@@ -11,16 +11,16 @@ module Tokamak
         end
         
         # unfortunately Tilt uses a global registry
-        def new(view, options)
-          TokamakTemplate.new(@registry, view, options)
+        def new(view = nil, line = 1, options = {}, &block)
+          TokamakTemplate.new(@registry, view, line,options, &block)
         end
         
       end
 
       class TokamakTemplate < ::Tilt::Template
         
-        def initialize(registry, view, options)
-          super(view, options)
+        def initialize(registry, view = nil, line = 1,options = {}, &block)
+          super(view, line, options, &block)
           @registry = registry
         end
         
@@ -38,7 +38,7 @@ module Tokamak
           local_assigns = super
           <<-RUBY
             begin
-              extend @registry[#{@media_type.inspect}].helper
+              extend env['tokamak'][#{@media_type.inspect}].helper
               #{local_assigns}
           RUBY
         end

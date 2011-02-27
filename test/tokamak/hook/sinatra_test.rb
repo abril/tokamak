@@ -14,6 +14,10 @@ require "tokamak/hook/sinatra"
 # simple sinatra app declaration
 set :views, File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test')
 
+use(Rack::Tokamak) do |registry|
+  registry << Tokamak::Builder::Json
+  registry << Tokamak::Builder::Xml
+end
 use(Rack::Conneg) do |conneg|
   conneg.set :accept_all_extensions, false
   conneg.set :fallback, :html
@@ -32,7 +36,6 @@ get "/" do
     {:id => 1, :title => "a great article", :updated => Time.now},
     {:id => 2, :title => "another great article", :updated => Time.now}
   ]
-  debugger
   tokamak :show, {}, {:@some_articles => some_articles}
 end
 
