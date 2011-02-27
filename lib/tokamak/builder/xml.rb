@@ -2,7 +2,9 @@ module Tokamak
   module Builder
     class Xml < Tokamak::Builder::Base
 
-      builder_for "application/xml", "text/xml"
+      def self.media_types
+        ["application/xml", "text/xml"]
+      end
 
       attr_reader :raw
 

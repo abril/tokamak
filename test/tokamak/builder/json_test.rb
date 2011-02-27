@@ -2,6 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../../test_helper')
 
 class Tokamak::Builder::JsonTest < Test::Unit::TestCase
 
+  def setup
+    @registry = Tokamak::Registry.new
+    @registry << DummyAtom
+  end
+
   def test_media_type_should_be_json
     assert_equal ["application/json"], Tokamak::Builder::Json.media_types
   end

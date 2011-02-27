@@ -1,8 +1,10 @@
 module Tokamak
   module Builder
     class Json < Tokamak::Builder::Base
-
-      builder_for "application/json"
+      
+      def self.media_types
+        ["application/json"]
+      end
 
       attr_reader :raw
 

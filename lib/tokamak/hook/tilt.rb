@@ -3,8 +3,27 @@ require File.expand_path(File.dirname(__FILE__) + '/../../tokamak.rb') unless de
 module Tokamak
   module Hook
     module Tilt
+      
+      class TokamakTilt
+        
+        def initialize
+          @registry = Tokamak::Registry.new
+        end
+        
+        # unfortunately Tilt uses a global registry
+        def new(view, options)
+          TokamakTemplate.new(@registry, view, options)
+        end
+        
+      end
 
       class TokamakTemplate < ::Tilt::Template
+        
+        def initialize(registry, view, options)
+          super(view, options)
+          @registry = registry
+        end
+        
         def initialize_engine
           return if defined?(::Tokamak)
           require_template_library 'tokamak'
@@ -19,7 +38,7 @@ module Tokamak
           local_assigns = super
           <<-RUBY
             begin
-              extend ::Tokamak.builder_lookup(#{@media_type.inspect}).helper
+              extend @registry[#{@media_type.inspect}].helper
               #{local_assigns}
           RUBY
         end
@@ -35,7 +54,7 @@ module Tokamak
         end
       end
 
-      ::Tilt.register 'tokamak', TokamakTemplate
+      ::Tilt.register 'tokamak', TokamakTilt.new
 
     end
   end

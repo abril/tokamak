@@ -7,10 +7,13 @@ end
 
 # but here you can cheack how to pass other default options to helper methods
 class DummyAtom < Tokamak::Builder::Base
-  builder_for "application/atom+xml"
+  
+  def self.media_types
+    ["application/atom+xml"]
+  end
 
-  collection_helper_default_options :atom_type => :feed
-  member_helper_default_options     :atom_type => :entry
+  # collection_helper_default_options :atom_type => :feed
+  # member_helper_default_options     :atom_type => :entry
   
   def initialize(obj, options = {})
     #do nothing
@@ -40,7 +43,9 @@ module MyHelper
   end
 end
 class OverwrittenHelperBuilder < Tokamak::Builder::Base
-  builder_for "some/media+type"
+  def self.media_types
+    ["some/media+type"]
+  end
 
   # just implement this method passing the new helper
   def self.helper
@@ -60,6 +65,11 @@ class TestOverwrittenHelper
 end
 
 class Tokamak::Builder::HelperTest < Test::Unit::TestCase
+  
+  def setup
+    @registry = Tokamak::Registry.new
+    @registry << DummyAtom
+  end
 
   def test_default_helper
     obj = { :foo => "bar" }

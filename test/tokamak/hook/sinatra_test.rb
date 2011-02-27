@@ -32,6 +32,7 @@ get "/" do
     {:id => 1, :title => "a great article", :updated => Time.now},
     {:id => 2, :title => "another great article", :updated => Time.now}
   ]
+  debugger
   tokamak :show, {}, {:@some_articles => some_articles}
 end
 

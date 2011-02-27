@@ -2,24 +2,7 @@ module Tokamak
   module Builder
     class Base
 
-      @@global_media_types = {}
-
       class << self
-        def builder_for(*args)
-          # class instance variable to store media types handled by a builder
-          @media_types = args
-          args.each do |media_type|
-            @@global_media_types[media_type] = self
-          end
-        end
-
-        def media_types
-          @media_types
-        end
-
-        def global_media_types
-          @@global_media_types
-        end
 
         def build(obj, options = {}, &block)
           recipe = block_given? ? block : options.delete(:recipe)
@@ -34,10 +17,7 @@ module Tokamak
         end
 
         def helper
-          unless instance_variable_get(:@helper_module)
-            @helper_module = Tokamak::Builder.helper_module_for(self)
-          end
-          @helper_module
+          @helper_module ||= Tokamak::Builder.helper_module_for(self)
         end
 
         def collection_helper_default_options(options = {}, &block)
