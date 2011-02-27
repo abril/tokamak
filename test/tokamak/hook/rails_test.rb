@@ -18,7 +18,6 @@ class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
     get '/test/show', {}, :accept => 'application/json'
 
     json = @controller.response.body
-    debugger
     hash = JSON.parse(json).extend(Methodize)
 
     assert_equal "John Doe"               , hash.author.first.name

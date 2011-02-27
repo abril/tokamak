@@ -12,8 +12,8 @@ class DummyAtom < Tokamak::Builder::Base
     ["application/atom+xml"]
   end
 
-  # collection_helper_default_options :atom_type => :feed
-  # member_helper_default_options     :atom_type => :entry
+  collection_helper_default_options :atom_type => :feed
+  member_helper_default_options     :atom_type => :entry
   
   def initialize(obj, options = {})
     #do nothing
