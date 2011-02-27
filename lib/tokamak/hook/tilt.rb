@@ -38,7 +38,12 @@ module Tokamak
           local_assigns = super
           <<-RUBY
             begin
-              extend env['tokamak'][#{@media_type.inspect}].helper
+              unless self.class.method_defined?(:tokamak_registry)
+                def tokamak_registry
+                  env['tokamak']
+                end
+              end
+              extend tokamak_registry[#{@media_type.inspect}].helper
               #{local_assigns}
           RUBY
         end

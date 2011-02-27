@@ -11,12 +11,12 @@ require "tokamak/hook/tilt"
 
 class Tokamak::Hook::TiltTest < Test::Unit::TestCase
   
-  def env
-    @tokamak_registry = Tokamak::Registry.new
-    @tokamak_registry << Tokamak::Builder::Json
-    @env = {}
-    @env["tokamak"] = @tokamak_registry
-    @env
+  def setup
+    @tokamak = Tokamak::Registry.new
+    @tokamak << Tokamak::Builder::Json
+  end
+  def tokamak_registry
+    @tokamak
   end
 
   def test_tokamak_builder_integration_with_tilt
@@ -27,7 +27,7 @@ class Tokamak::Hook::TiltTest < Test::Unit::TestCase
     ]
 
     view = File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test/show.tokamak')
-    template = Tokamak::Hook::Tilt::TokamakTemplate.new(@tokamak_registry, view, :media_type => "application/json")
+    template = Tokamak::Hook::Tilt::TokamakTemplate.new(@tokamak, view, :media_type => "application/json")
     json     = template.render(self, :@some_articles => @some_articles)
     hash     = JSON.parse(json).extend(Methodize)
 
