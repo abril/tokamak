@@ -22,16 +22,9 @@ module Tokamak
         end
 
         def build(obj, options = {}, &block)
-          if block_given?
-            recipe = block
-          else
-            recipe = options.delete(:recipe)
-          end
+          recipe = block_given? ? block : options.delete(:recipe)
 
-          unless recipe.respond_to?(:call)
-            recipe = Tokamak::Recipes[recipe]
-            raise Tokamak::BuilderError.new("Recipe required to build representation.") unless recipe.respond_to?(:call)
-          end
+          raise Tokamak::BuilderError.new("Recipe required to build representation.") unless recipe.respond_to?(:call)
 
           builder = self.new(obj, options)
 

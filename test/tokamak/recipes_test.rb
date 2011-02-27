@@ -1,45 +1,49 @@
 require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class Tokamak::RecipesTest < Test::Unit::TestCase
+  
+  def setup
+    @recipes = Tokamak::Recipes.new
+  end
 
   def test_add_recipe_to_tokamak
-    Tokamak::Recipes.add "foo" do
+    @recipes.add "foo" do
       string = "recipes are represented as blocks"
     end
-    Tokamak::Recipes.add :bar do
+    @recipes.add :bar do
       string = "recipes are represented as blocks"
     end
 
-    assert_equal Proc, Tokamak::Recipes["foo"].class
-    assert_equal Proc, Tokamak::Recipes[:bar].class
-    assert_equal nil , Tokamak::Recipes["undeclared recipe"]
+    assert_equal Proc, @recipes["foo"].class
+    assert_equal Proc, @recipes[:bar].class
+    assert_equal nil , @recipes["undeclared recipe"]
   end
 
   def test_remove_recipe_from_tokamak
-    Tokamak::Recipes.add :bar do
+    @recipes.add :bar do
       string = "recipes are represented as blocks"
     end
-    Tokamak::Recipes.remove(:bar)
+    @recipes.remove(:bar)
 
-    assert_equal nil, Tokamak::Recipes[:bar]
+    assert_equal nil, @recipes[:bar]
   end
 
   def test_list_recipe_names
-    Tokamak::Recipes.add "foo" do
+    @recipes.add "foo" do
       string = "recipes are represented as blocks"
     end
-    Tokamak::Recipes.add :bar do
+    @recipes.add :bar do
       string = "recipes are represented as blocks"
     end
 
-    assert Tokamak::Recipes.list.include?(:bar)
-    assert Tokamak::Recipes.list.include?("foo")
+    assert @recipes.list.include?(:bar)
+    assert @recipes.list.include?("foo")
   end
 
   def test_builder_with_previously_declared_recipe
     obj = [{ :foo => "bar" }]
 
-    Tokamak::Recipes.add :simple_feed do |collection|
+    @recipes.add :simple_feed do |collection|
       collection.values do |values|
         values.id "an_id"
       end
@@ -51,7 +55,7 @@ class Tokamak::RecipesTest < Test::Unit::TestCase
       end
     end
 
-    json = Tokamak::Builder::Json.build(obj, :recipe => :simple_feed)
+    json = Tokamak::Builder::Json.build(obj, :recipe => @recipes[:simple_feed])
     hash = JSON.parse(json).extend(Methodize)
 
     assert_equal "an_id", hash.id
@@ -62,7 +66,7 @@ class Tokamak::RecipesTest < Test::Unit::TestCase
     obj = [{ :foo => "bar" }]
 
     assert_raise Tokamak::BuilderError do
-      json = Tokamak::Builder::Json.build(obj, :recipe => :invalid_recipe)
+      json = Tokamak::Builder::Json.build(obj, :recipe => nil)
     end
   end
 
