@@ -1,5 +1,23 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../tokamak.rb') unless defined? ::Tokamak
 
+module ActionController
+  class Base
+    def tokamak_registry
+      @tokamak || use_tokamak
+    end
+    def use_tokamak(&block)
+      @tokamak = ::Tokamak::Registry.new
+      if block_given?
+        yield @tokamak
+      else
+        @tokamak << ::Tokamak::Builder::Json
+        @tokamak << ::Tokamak::Builder::Xml
+      end
+      @tokamak
+    end
+  end
+end
+
 module Tokamak
   module Hook
     module Rails
@@ -8,7 +26,7 @@ module Tokamak
         include ::ActionView::TemplateHandlers::Compilable
 
         def compile(template)
-          "@content_type_helpers = ::Tokamak.builder_lookup(self.response.content_type).helper; " +
+          "@content_type_helpers = @controller.tokamak_registry[self.response.content_type].helper; " +
           "extend @content_type_helpers; " +
           "extend Tokamak::Hook::Rails::Helpers; " +
           "code_block = lambda { #{template.source} };" +
