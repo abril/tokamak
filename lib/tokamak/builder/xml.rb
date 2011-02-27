@@ -33,11 +33,7 @@ module Tokamak
 
       def values(options = {}, &block)
         options.each do |key,value|
-          attr = key.to_s
-          if attr =~ /^xmlns(:\w+)?$/
-            ns = attr.split(":", 2)[1]
-            @parent.add_namespace_definition(ns, value)
-          end
+          apply_namespace(@parent, key.to_s, value)
         end
         yield Values.new(self)
       end
@@ -68,50 +64,45 @@ module Tokamak
 
     private
 
-      def create_element(node, prefix, *args)
-        node = @raw.create_element(node) do |n|
-          if prefix
-            if namespace = prefix_valid?(prefix)
-              # Adding namespace prefix
-              n.namespace = namespace
-              namespace = nil
-            end
-          end
-
-          args.each do |arg|
-            case arg
-            # Adding XML attributes
-            when Hash
-              arg.each { |k,v|
-                key = k.to_s
-                if key =~ /^xmlns(:\w+)?$/
-                  ns_name = key.split(":", 2)[1]
-                  n.add_namespace_definition(ns_name, v)
-                  next
-                end
-                n[k.to_s] = v.to_s
-              }
-            # Adding XML node content
-            else
-              content = arg.kind_of?(Time) || arg.kind_of?(DateTime) ? arg.xmlschema : arg
-              n.content = content
-            end
-          end
+      def apply_namespace(node, key, value)
+        if key =~ /^xmlns(:\w+)?$/
+          ns_name = key.split(":", 2)[1]
+          node.add_namespace_definition(ns_name, value)
+          return true
         end
+        false
       end
 
-      def prefix_valid?(prefix)
-        ns = @parent.namespace_definitions.find { |x| x.prefix == prefix.to_s }
-
-        unless ns
-          @parent.ancestors.each do |a|
-            next if a == @raw
-            ns = a.namespace_definitions.find { |x| x.prefix == prefix.to_s }
-            break if ns
+      def create_element(node, prefix, *args)
+        n = @raw.create_element(node)
+        if prefix
+          if namespace = find_prefix(prefix)
+            n.namespace = namespace
           end
         end
 
-        return ns
+        args.each do |arg|
+          if arg.kind_of? Hash
+            # Adding XML attributes
+            arg.each { |k,v|
+              key = k.to_s
+              n[key] = v.to_s unless apply_namespace(n, key, v)
+            }
+          elsif arg.kind_of?(Time) || arg.kind_of?(DateTime)
+            # Adding XML node content
+            n.content = arg.xmlschema
+          else
+            n.content = arg
+          end
+        end
+        n
+      end
+
+      def find_prefix(prefix)
+        all = [@parent] + @parent.ancestors
+        all.each do |a|
+          return a.namespace_definitions.find { |x| x.prefix == prefix.to_s } if a != @raw
+        end
       end
 
     end
