@@ -74,7 +74,7 @@ class Tokamak::Builder::XmlTest < Test::Unit::TestCase
     obj = 42
 
     assert_raise Tokamak::BuilderError do
-      json = Tokamak::Builder::Json.build(obj) do |collection, number|
+      json = Tokamak::Builder::Xml.build(obj) do |collection, number|
         collection.values do |values|
           values.id number
         end
