@@ -23,16 +23,15 @@ module Tokamak
         raise Tokamak::BuilderError.new("Members method require a collection to execute") unless collection.respond_to?(:each)
         root = options[:root] || "members"
 
-        add_to_current(root, [])
+        add_to(@current, root, [])
         collection.each do |member|
-          node = {}
 
           parent = @current
-          @current = node
+          @current = {}
           block.call(self, member)
+          add_to(parent, root, @current)
           @current = parent
 
-          add_to_current(root, node)
         end
       end
 
@@ -61,7 +60,7 @@ module Tokamak
           @current = parent
         end
 
-        add_to_current(name, node)
+        add_to(@current, name, node)
       end
 
       def representation
@@ -98,15 +97,15 @@ module Tokamak
         end
       end
 
-      def add_to_current(name, value)
-        if @current[name]
-          if @current[name].kind_of?(Array)
-            @current[name] << value
+      def add_to(node, name, value)
+        if node[name]
+          if node[name].kind_of?(Array)
+            node[name] << value
           else
-            @current[name] = [@current[name], value]
+            node[name] = [node[name], value]
           end
         else
-          @current[name] = value
+          node[name] = value
         end
       end
 
