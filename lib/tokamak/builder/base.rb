@@ -25,11 +25,7 @@ module Tokamak
         end
 
         def build(obj, options = {}, &block)
-          if block_given?
-            recipe = block
-          else
-            recipe = options.delete(:recipe)
-          end
+          recipe = block_given? ? block : options.delete(:recipe)
 
           unless recipe.respond_to?(:call)
             recipe = Tokamak::Recipes[recipe]
@@ -44,10 +40,7 @@ module Tokamak
         end
 
         def helper
-          unless instance_variable_get(:@helper_module)
-            @helper_module = Tokamak::Builder.helper_module_for(self)
-          end
-          @helper_module
+          @helper_module ||= Tokamak::Builder.helper_module_for(self)
         end
 
         def collection_helper_default_options(options = {}, &block)
