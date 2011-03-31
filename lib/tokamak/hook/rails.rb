@@ -49,10 +49,8 @@ module Tokamak
               extend @content_type_helpers
               context = eval("(class << self; self; end)", binding)
 
-              unless caller_binding[:locals].nil?
-                caller_binding[:locals].each do |k, v|
-                  context.send(:define_method, k.to_sym) { v }
-                end
+              caller_binding.fetch(:locals, {}).each do |k, v|
+                context.send(:define_method, k.to_sym) { v }
               end
 
               partial(partial_path, binding)
