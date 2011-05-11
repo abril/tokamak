@@ -5,11 +5,15 @@ gem "json_pure", :require => "json/pure"
 gem "nokogiri"
 
 # Other dependencies
-gem "ruby-debug" , :group => [:development, :test], :platforms => [:mri]
-gem "methodize"  , :group => [:development, :test]
-gem "rack"       , "~>1.1", :group => [:development, :test]
-gem "rack-test"  , :require => "rack/test", :group => [:development, :test]
-gem "rack-conneg", :require => "rack/conneg", :group => [:development, :test]
-gem "tilt"       , "~>1.2", :group => [:development, :test]
-gem "sinatra"    , "~>1.1", :group => [:development, :test]
-gem "rails"      , "2.3.8", :group => [:development, :test]
+group :development, :test do
+  gem "ruby-debug"  , :platforms => [:mri_18]
+  gem "ruby-debug19", :platforms => [:mri_19]
+
+  gem "methodize"  
+  gem "rack"       , "~>1.1"
+  gem "rack-test"  , :require => "rack/test"
+  gem "rack-conneg", :require => "rack/conneg"
+  gem "tilt"       , "~>1.2"
+  gem "sinatra"    , "~>1.1"
+  gem "rails"      , "2.3.8"
+end

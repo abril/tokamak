@@ -1,3 +1,4 @@
 Gemfile.lock
 .bundle/
 test/rails2_skel/log/
+*.gem

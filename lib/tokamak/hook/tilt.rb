@@ -6,12 +6,15 @@ module Tokamak
 
       class TokamakTemplate < ::Tilt::Template
         def initialize_engine
-          return if defined?(::Tokamak)
           require_template_library 'tokamak'
         end
 
+        def self.engine_initialized?
+          defined? ::Tokamak
+        end
+
         def prepare
-          @media_type = options[:media_type]
+          @media_type = options[:media_type] || @options[:media_type]
           raise Tokamak::BuilderError.new("Content type required to build representation.") unless @media_type
         end
 
