@@ -15,5 +15,9 @@ group :development, :test do
   gem "rack-conneg", :require => "rack/conneg"
   gem "tilt"       , "~>1.2"
   gem "sinatra"    , "~>1.1"
-  gem "rails"      , "2.3.8"
+  if ENV["RAILS_MAJOR_VERSION"] == "3"
+    gem "rails"      , "3.0.9"
+  else
+    gem "rails"      , "2.3.8"
+  end
 end

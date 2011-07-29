@@ -7,7 +7,8 @@ begin
   require 'ruby-debug'
 rescue Exception => e; end
 
-require File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/config/environment.rb')
+railsv = ENV["RAILS_MAJOR_VERSION"] || "2"
+require File.expand_path(File.dirname(__FILE__) + "/../../rails#{railsv}_skel/config/environment.rb")
 
 # put the require below to use tokamak in your rails project
 require "tokamak/hook/rails"
@@ -15,9 +16,10 @@ require "tokamak/hook/rails"
 class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
 
   def test_view_generation_with_json
-    get '/test/show', {}, :accept => 'application/json'
+    self.accept = "application/json"
+    get '/test/show'
 
-    json = @controller.response.body
+    json = (@controller || self).response.body
     hash = JSON.parse(json).extend(Methodize)
 
     assert_equal "John Doe"               , hash.author.first.name
@@ -36,9 +38,10 @@ class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
   end
 
   def test_view_generation_with_xml
-    get '/test/show', {}, :accept => 'application/xml'
+    self.accept = "application/xml"
+    get '/test/show'
 
-    xml = @controller.response.body
+    xml = (@controller || self).response.body
     xml = Nokogiri::XML::Document.parse(xml)
 
     assert_equal "John Doe"               , xml.css("root > author").first.css("name").first.text
@@ -56,9 +59,10 @@ class Tokamak::Hook::RailsTest < ActionController::IntegrationTest
   end
 
   def test_view_generation_with_partial
-    get '/test/feed', {}, :accept => 'application/xml'
+    self.accept = "application/xml"
+    get '/test/feed'
 
-    xml = @controller.response.body
+    xml = (@controller || self).response.body
     xml = Nokogiri::XML::Document.parse(xml)
 
     assert_equal "John Doe"               , xml.css("root > author").first.css("name").first.text

@@ -17,6 +17,19 @@ module Tokamak
         end
       end
 
+      module Rails3Adapter
+        def _pick_partial_template(path) #:nodoc:
+          return path unless path.is_a?(String)
+          prefix = controller_path unless path.include?(?/)
+          find_template(path, prefix, true).instance_eval do
+            unless respond_to?(:path)
+              def path; virtual_path end
+            end
+            self
+          end
+        end
+      end
+
       module Helpers
         # Load a partial template to execute in describe
         #
@@ -41,7 +54,12 @@ module Tokamak
         # end
         #
         def partial(partial_path, caller_binding = nil)
-          template = _pick_partial_template(partial_path)
+          begin
+            template = _pick_partial_template(partial_path)
+          rescue NoMethodError
+            self.extend(Rails3Adapter)
+            template = _pick_partial_template(partial_path)
+          end
 
           # Create a context to assing variables
           if caller_binding.kind_of?(Hash)
