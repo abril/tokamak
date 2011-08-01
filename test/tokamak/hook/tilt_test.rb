@@ -10,6 +10,17 @@ rescue Exception => e; end
 require "tokamak/hook/tilt"
 
 class Tokamak::Hook::TiltTest < Test::Unit::TestCase
+  def setup
+    @template_file = File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test/show.tokamak')
+  end
+  
+  def test_tokamak_builder_with_tilt_and_unsupported_media_type
+    e = assert_raise(Tokamak::BuilderError) do
+      template = Tokamak::Hook::Tilt::TokamakTemplate.new(@template_file, :media_type => 'unsupported/type')
+      template.render(self)
+    end
+    assert_equal "Could not find a builder for the media type: unsupported/type", e.message
+  end
 
   def test_tokamak_builder_integration_with_tilt
     @some_articles = [
@@ -17,7 +28,7 @@ class Tokamak::Hook::TiltTest < Test::Unit::TestCase
       {:id => 2, :title => "another great article", :updated => Time.now}
     ]
 
-    template = Tokamak::Hook::Tilt::TokamakTemplate.new(File.expand_path(File.dirname(__FILE__) + '/../../rails2_skel/app/views/test/show.tokamak'), :media_type => "application/json")
+    template = Tokamak::Hook::Tilt::TokamakTemplate.new(@template_file, :media_type => "application/json")
     json     = template.render(self, :@some_articles => @some_articles)
     hash     = JSON.parse(json).extend(Methodize)
 

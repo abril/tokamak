@@ -7,7 +7,10 @@ require "bundler/setup"
 # Lib
 module Tokamak
   def self.builder_lookup(media_type)
-    Tokamak::Builder::Base.global_media_types[media_type[/^([^\s\;]+)/, 1]]
+    builder = Tokamak::Builder::Base.global_media_types[media_type[/^([^\s\;]+)/, 1]]
+    builder.nil? ?
+      (raise Tokamak::BuilderError.new("Could not find a builder for the media type: #{media_type}")) : 
+      builder
   end
 end
 
