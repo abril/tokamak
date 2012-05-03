@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
+require 'test_helper'
 
 # every builder comes with a default helper, with collection and member methods. See lib/tokamak/builder.rb
 class TestDefaultHelper
