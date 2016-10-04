@@ -79,12 +79,8 @@ module Tokamak
 
         if hashes.empty?
           # only simple values
-          unless vals.empty?
-            vals = vals.first if vals.size == 1
-            node = has_block ? {} : vals
-          else
-            node = has_block ? {} : nil
-          end
+          vals = vals.first if vals.size==1
+          node = has_block ? {} : vals
         else
           # yes we have hashes
           node = {}
